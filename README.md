@@ -20,6 +20,6 @@ First of all we have CRUD API
 
 <img width="807" alt="customer-passport together" src="https://user-images.githubusercontent.com/79960958/183266243-4706b8b6-d288-4046-9df7-cfe72f9cf594.png">
 
-6. To scan file you have to execute scan_file file. This one didn't have clear instructions on should I associate it with other code blocks or not, so I kept it separate. Here I used Railway Oriented Programming approach and I used contractsPY library. And when sent an image I got this:
+6. To scan file you have to execute scan_file file. This one didn't have clear instructions on how should I associate it with other code blocks or not, so I kept it separate. Here I used Railway Oriented Programming approach and I used contractsPY library. And when sent an image I got this:
 
 <img width="1032" alt="xmlfile" src="https://user-images.githubusercontent.com/79960958/183266373-e8034d2b-5abd-4217-afe1-a4fedbd9c070.png">
