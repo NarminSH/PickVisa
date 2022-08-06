@@ -17,21 +17,27 @@ class Customer(models.Model):
 
 
 class Passport(models.Model):
-    # relations
+    # relation
     customer = models.ForeignKey(
         Customer, on_delete=models.CASCADE, db_index=True, related_name="passports"
     )
 
+    GENDER_CHOICES = (
+        ("Male", "Male"),
+        ("Female", "Female")
+    )
+
+    scan_file = models.ImageField(upload_to='passport_images/')
     document_number = models.CharField(max_length=50)
-    first_name = models.CharField(max_length=60)
+    first_name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=20)
     patronymic = models.CharField(max_length=20)
     nationality = models.CharField(max_length=20)
-    birth_date = models.CharField(max_length=20)
+    birth_date = models.DateField()
     personal_number = models.CharField(max_length=20)
-    gender = models.CharField(max_length=20)
-    issue_date = models.CharField(max_length=20)
-    expire_date = models.CharField(max_length=20)
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES )
+    issue_date = models.DateField()
+    expire_date = models.DateField()
     issuing_authority = models.CharField(max_length=20)
 
     created_at = models.DateTimeField(auto_now_add=True, null=True)

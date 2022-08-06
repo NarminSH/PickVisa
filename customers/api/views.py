@@ -1,7 +1,9 @@
+from django.http import JsonResponse
 from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
-    CreateAPIView
+    CreateAPIView,
+    ListAPIView
 )
 from customers.api.serializers import (
     CustomerPassportSerializer, 
@@ -48,3 +50,20 @@ class PassportAPIView(RetrieveUpdateDestroyAPIView):
 class CustomerPassportAPIView(CreateAPIView):
     serializer_class = CustomerPassportSerializer
     queryset = Customer.objects.all()
+
+
+class CustomerPassportsAPIView(ListAPIView):
+    queryset = Passport.objects.all()
+    serializer_class = PassportListSerializer
+
+    def get(self, *args, **kwargs):
+        current_customer = Customer.objects.filter(id=kwargs.get("pk")).first()
+        passports = Passport.objects.filter(customer=current_customer)
+        if not passports:
+            return JsonResponse(data=[], status=200, safe=False)
+        print(passports)
+        serializer = PassportListSerializer(
+            passports, many=True, context={"request": self.request}
+        )
+        return JsonResponse(data=serializer.data, safe=False)
+

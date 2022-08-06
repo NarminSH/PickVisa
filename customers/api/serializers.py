@@ -21,6 +21,7 @@ class PassportSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "customer",
+            "scan_file",
             "document_number",
             "first_name",
             "last_name",
