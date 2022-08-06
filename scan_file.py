@@ -16,7 +16,6 @@ base64_string = base64_bytes.decode("ascii")
 
 @if_fails(message="Could not process request")
 def send_passport_image(state):
-    print('heree')
     image_data = open(state.image,'rb').read()
     state.headers = {'Authorization': 'Basic %s' % base64_string}
 
@@ -29,7 +28,6 @@ def get_task_info(state):
     contents = state.task_info.content
     dict_str = contents.decode("UTF-8")
     mydata = ast.literal_eval(dict_str)
-
     state.task_id = mydata["taskId"]
     return True if state.task_id else False
 
@@ -37,6 +35,7 @@ def get_task_info(state):
 @if_fails(message="There was a problem getting passport data")
 def get_task_url(state):
     task = requests.get(url="https://cloud-eu.ocrsdk.com/v2/getTaskStatus", params={"taskId": state.task_id}, headers=state.headers)
+    print(task.content)
     return True if task.status_code==200 else False
 
 send_passport = Usecase()
