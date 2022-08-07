@@ -1,3 +1,4 @@
+
 from rest_framework import serializers
 from customers.models import Customer, Passport
 
@@ -35,6 +36,7 @@ class PassportSerializer(serializers.ModelSerializer):
             "issuing_authority",
             "created_at",
         )
+        
 
 
 class PassportListSerializer(PassportSerializer):
@@ -48,6 +50,7 @@ class OnlyPassportSerializer(serializers.ModelSerializer): # this serializer is 
         fields = (
             "id",
             "document_number",
+            "scan_file",
             "first_name",
             "last_name",
             "patronymic",
@@ -76,6 +79,7 @@ class CustomerPassportSerializer(serializers.ModelSerializer):
             "passports",
             "created_at",
         )
+
 
     def create(self, validated_data):
         passports_data = validated_data.pop('passports')

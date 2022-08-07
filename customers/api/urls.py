@@ -2,7 +2,7 @@
 from django.urls import path
 from customers.api.views import (
     CustomerAPIView,
-    CustomerPassportAPIView, 
+    UnitedCustomerPassportAPIView, 
     CustomerPassportsAPIView, 
     CustomersAPIView, 
     PassportAPIView, PassportsAPIView )
@@ -17,5 +17,5 @@ urlpatterns = [
     path("customers/<int:pk>/passports", CustomerPassportsAPIView.as_view()),
     path("passports/", PassportsAPIView.as_view(), name="passports"),
     path("passports/<int:pk>", PassportAPIView.as_view(), name="passport"),
-    path("customer-passport/", CustomerPassportAPIView.as_view(), name="customer-passport"),
+    path("customer-passport/", UnitedCustomerPassportAPIView.as_view(), name="united-customer-passport"),
 ]

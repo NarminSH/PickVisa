@@ -1,0 +1,1 @@
+{"taskId":"58957615-4aa6-425f-abff-8f36c436e470","registrationTime":"2022-08-07T11:59:11Z","statusChangeTime":"2022-08-07T11:59:12Z","status":"InProgress","filesCount":1,"requestStatusDelay":5000}

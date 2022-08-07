@@ -35,7 +35,10 @@ def get_task_info(state):
 @if_fails(message="There was a problem getting passport data")
 def get_task_url(state):
     task = requests.get(url="https://cloud-eu.ocrsdk.com/v2/getTaskStatus", params={"taskId": state.task_id}, headers=state.headers)
-    print(task.content)
+    file = open("task_url.txt","wb")
+    file.write(task.content)
+    file.close()
+    print('finished get task url')
     return True if task.status_code==200 else False
 
 send_passport = Usecase()
